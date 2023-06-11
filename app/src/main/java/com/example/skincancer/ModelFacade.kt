@@ -55,13 +55,13 @@ class ModelFacade private constructor(context: Context) {
 		val itemsList: ArrayList<SkinCancer> = ArrayList()
 			currentSkinCancers = db.listSkinCancer()
 			for (x in currentSkinCancers.indices) {
-				if ( currentSkinCancers[x].getDates() == dates) {
+				if ( currentSkinCancers[x].dates == dates) {
 					val vo: SkinCancerVO = currentSkinCancers[x]
-				    val itemx = SkinCancer.createByPKSkinCancer(vo.getId())
-					    itemx.id = vo.getId()
-				    itemx.dates = vo.getDates()
-				    itemx.images = vo.getImages()
-				    itemx.outcome = vo.getOutcome()
+				    val itemx = SkinCancer.createByPKSkinCancer(vo.id)
+					    itemx.id = vo.id
+				    itemx.dates = vo.dates
+				    itemx.images = vo.images
+				    itemx.outcome = vo.outcome
 					itemsList.add(itemx)
 				}
 			}
@@ -71,7 +71,7 @@ class ModelFacade private constructor(context: Context) {
 		currentSkinCancers = db.listSkinCancer()
 		val res: ArrayList<String> = ArrayList()
 		for (x in currentSkinCancers.indices) {
-			res.add(currentSkinCancers[x].getDates().toString())
+			res.add(currentSkinCancers[x].dates.toString())
 		}
 		return res
 	}
@@ -96,11 +96,11 @@ class ModelFacade private constructor(context: Context) {
 		var res = ArrayList<SkinCancer>()
 			for (x in currentSkinCancers.indices) {
 					val vo: SkinCancerVO = currentSkinCancers[x]
-				    val itemx = SkinCancer.createByPKSkinCancer(vo.getId())
-	            itemx.id = vo.getId()
-            itemx.dates = vo.getDates()
-            itemx.images = vo.getImages()
-            itemx.outcome = vo.getOutcome()
+				    val itemx = SkinCancer.createByPKSkinCancer(vo.id)
+	            itemx.id = vo.id
+            itemx.dates = vo.dates
+            itemx.images = vo.images
+            itemx.outcome = vo.outcome
 			res.add(itemx)
 		}
 		return res
@@ -122,10 +122,10 @@ class ModelFacade private constructor(context: Context) {
 	        } else {
 	            val vo: SkinCancerVO = res[0]
 	            val itemx = SkinCancer.createByPKSkinCancer(value)
-            itemx.id = vo.getId()
-            itemx.dates = vo.getDates()
-            itemx.images = vo.getImages()
-            itemx.outcome = vo.getOutcome()
+            itemx.id = vo.id
+            itemx.dates = vo.dates
+            itemx.images = vo.images
+            itemx.outcome = vo.outcome
 	            itemx
 	        }
     }
@@ -138,7 +138,7 @@ class ModelFacade private constructor(context: Context) {
         currentSkinCancers = db.listSkinCancer()
         val res: ArrayList<String> = ArrayList()
             for (skincancer in currentSkinCancers.indices) {
-                res.add(currentSkinCancers[skincancer].getId())
+                res.add(currentSkinCancers[skincancer].id)
             }
         return res
     }
