@@ -137,7 +137,7 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
 	fun editSkinCancer(skincancervo: SkinCancerVO) {
 		database = writableDatabase
-		val args = arrayOf(skincancervo.getId())
+		val args = arrayOf(skincancervo.id)
 		database.update(skinCancerTableName, putData(skincancervo), "id =?", args)
 	}
 
@@ -149,20 +149,20 @@ class DB (context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
 	private fun setData(cursor: Cursor): SkinCancerVO {
 		val skincancervo = SkinCancerVO()
-		skincancervo.setId(cursor.getString(skinCancerColId))
-		skincancervo.setDates(cursor.getString(skinCancerColDates))
-		skincancervo.setImages(cursor.getString(skinCancerColImages))
-		skincancervo.setOutcome(cursor.getString(skinCancerColOutcome))
+		skincancervo.id = cursor.getString(skinCancerColId)
+		skincancervo.dates = cursor.getString(skinCancerColDates)
+		skincancervo.images = cursor.getString(skinCancerColImages)
+		skincancervo.outcome = cursor.getString(skinCancerColOutcome)
 
 		return skincancervo
 	}
 
 	private fun putData(skincancervo: SkinCancerVO): ContentValues {
 		val wr = ContentValues(skincancerNumberCols)
-		wr.put(skincancerCols[skinCancerColId], skincancervo.getId())
-		wr.put(skincancerCols[skinCancerColDates], skincancervo.getDates())
-		wr.put(skincancerCols[skinCancerColImages], skincancervo.getImages())
-		wr.put(skincancerCols[skinCancerColOutcome], skincancervo.getOutcome())
+		wr.put(skincancerCols[skinCancerColId], skincancervo.id)
+		wr.put(skincancerCols[skinCancerColDates], skincancervo.dates)
+		wr.put(skincancerCols[skinCancerColImages], skincancervo.images)
+		wr.put(skincancerCols[skinCancerColOutcome], skincancervo.outcome)
 		return wr
 	}
 
